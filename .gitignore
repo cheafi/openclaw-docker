@@ -1,0 +1,10 @@
+.env
+.DS_Store
+data/credentials/
+data/agents/main/sessions/
+data/agents/main/agent/models.json
+data/logs/
+data/update-check.json
+data/openclaw.json.bak*
+data/canvas/
+*.log

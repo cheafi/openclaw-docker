@@ -1,0 +1,111 @@
+# ============================================================
+# 🦞 OpenClaw on Docker — docker-compose.yml
+# ============================================================
+# Covers: §3 安装, §5 模型管理, §6 智能体, §7 工具/定时, §8 网关运维,
+#         §9 远程访问, §10 安全防护, §11 Web UI
+#
+# Usage:
+#   cp .env.example .env        # fill in your keys
+#   docker compose up -d        # start
+#   docker compose logs -f      # tail logs
+#   docker compose exec claw openclaw doctor   # health check
+#   docker compose down         # stop
+# ============================================================
+
+services:
+
+  # ─── 🦞 OpenClaw Gateway ────────────────────────────────────
+  claw:
+    build: .
+    container_name: openclaw
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      # Ollama reachable inside Docker network
+      - OLLAMA_HOST=http://ollama:11434
+      # Futu OpenD on host machine
+      - FUTU_HOST=host.docker.internal
+      - FUTU_PORT=11111
+      - FUTU_TRD_ENV=SIMULATE
+
+    # §8  Gateway port  /  §11 Web UI port
+    ports:
+      - "${OPENCLAW_GATEWAY_PORT:-18789}:18789"   # WebSocket gateway
+      - "${OPENCLAW_WEB_PORT:-18790}:18790"        # Web UI / dashboard
+
+    volumes:
+      # Bind-mount the entire state directory.
+      # data/ maps to ~/.openclaw inside the container.
+      # Contains: openclaw.json, workspace/, credentials/, agents/, identity/
+      - ./data:/home/openclaw/.openclaw
+      # §3 Private documents directory for local doc assistant
+      - ./documents:/home/openclaw/documents
+
+    depends_on:
+      ollama:
+        condition: service_started
+
+    # §10 Security — drop all caps, add only what's needed
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    read_only: false
+
+    # §6 Agent limits
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: "2.0"
+
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:18789/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "20m"
+        max-file: "5"
+
+  # ─── 🧠 Ollama — Local LLM for Private Document Assistant ──
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    restart: unless-stopped
+
+    ports:
+      - "${OLLAMA_PORT:-11434}:11434"
+
+    volumes:
+      # Persist downloaded models across restarts
+      - ollama-models:/root/.ollama
+      # Share documents with OpenClaw for local processing
+      - ./documents:/documents:ro
+
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+          cpus: "4.0"
+
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:11434/api/tags"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  ollama-models:
+    name: ollama-models
