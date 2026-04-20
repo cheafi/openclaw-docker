@@ -10,12 +10,12 @@
       "compaction": { "mode": "safeguard" },
       "workspace": "/home/openclaw/.openclaw/workspace",
       "model": {
-        "primary": "openai/gpt-5.2-pro"
+        "primary": "reelx/gpt-5.4"
       },
       "models": {
-        "openai/gpt-5.2-pro": {},
-        "anthropic/claude-sonnet-4": {},
-        "openrouter/auto": {}
+        "reelx/gpt-5.4": {},
+        "reelx/gemini-3.1-pro-preview": {},
+        "reelx/claude-sonnet-4-6": {}
       }
     }
   },
@@ -44,7 +44,13 @@
     "discord": {
       "dmPolicy": "open",
       "groupPolicy": "open",
+      "streaming": "partial",
       "allowFrom": ["*"],
+      "guilds": {
+        "YOUR_GUILD_ID": {
+          "requireMention": false
+        }
+      },
       "actions": {
         "reactions": true,
         "messages": true,
@@ -69,5 +75,20 @@
   "meta": {
     "lastTouchedVersion": "2026.3.24",
     "lastTouchedAt": "2026-03-24T00:00:00.000Z"
+  },
+
+  "models": {
+    "providers": {
+      "reelx": {
+        "baseUrl": "https://reelxai.com/v1",
+        "apiKey": "${OPENAI_API_KEY}",
+        "api": "openai-completions",
+        "models": [
+          { "id": "gpt-5.4", "name": "GPT-5.4", "contextWindow": 128000, "reasoning": true },
+          { "id": "gemini-3.1-pro-preview", "name": "Gemini 3.1 Pro", "contextWindow": 128000 },
+          { "id": "claude-sonnet-4-6", "name": "Claude Sonnet 4.6", "contextWindow": 200000 }
+        ]
+      }
+    }
   }
 }
