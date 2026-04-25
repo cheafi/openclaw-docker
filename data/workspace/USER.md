@@ -1,23 +1,46 @@
-# USER.md - About Your Human
-
-- **Name:** Chan Tsz Wai
-- **What to call them:** Wai
+# USER.md
+- **Name:** Chan Tsz Wai ("Wai")
 - **Timezone:** HKT (UTC+8)
-- **Role:** BDR at Autodesk Construction Solutions
-- **Market:** US market
-- **Focus:** Autodesk Forma, construction solutions
-- **Languages:** Traditional Chinese + English (bilingual)
+- **Languages:** Cantonese + English
+- **Style:** Practical, execution-focused
 
-## Context
+## Current Role
+**Senior Associate, Regional Business Development, APAC** — Autodesk Construction Solutions (Feb 2026–present)
+- Drive business development for **Autodesk Forma** across APAC: Hong Kong, Taiwan, China, Indonesia, Philippines, Vietnam, Korea
+- Build and qualify pipeline by engaging developers, planners, consultants on early-stage project opportunities
+- Develop multi-country pipeline aligned to platform use cases
+- Identify target accounts through project tracking and market intelligence
+- Support regional events and campaigns to generate leads
+- Collaborate with sales and technical teams to progress opportunities
 
-- Works as a Business Development Representative (BDR) at Autodesk
-- Focused on Autodesk Construction Solutions for the US market
-- Special focus on Forma-related opportunities and positioning
-- Uses Discord as a primary communication channel with the bot
-- Runs OpenClaw on Docker for AI assistant workflows
-- Prefers practical, execution-focused support over theoretical advice
-- Communication style: bilingual Traditional Chinese + English mix
+## Previous Role
+**Regional BDR, GCR** — Autodesk Construction Solutions (Oct 2024–Feb 2026)
+- Drove adoption of Forma across HK, TW, China
+- Worked with developers, contractors, consultants on BIM, ISO 19650, data silos, fragmented workflows
 
----
+## Key Skills
+Business Development, Business Intelligence (BI), Construction Tech, BIM, AEC Industry
 
-The more you know, the better you can help. But remember — you're learning about a person, not building a dossier. Respect the difference.
+## APAC Markets (EPC monitoring)
+| Country | Flag | Focus Areas |
+|---------|------|-------------|
+| Hong Kong | 🇭🇰 | MTR projects, Northern Metropolis, airport expansion, public housing |
+| Taiwan | 🇹🇼 | High-speed rail, green building mandates, urban renewal |
+| China | 🇨🇳 | Infrastructure stimulus, BIM mandates, smart city |
+| Indonesia | 🇮🇩 | New capital (IKN), toll roads, industrial parks |
+| Philippines | 🇵🇭 | Build Better More program, Manila metro, airports |
+| Vietnam | 🇻🇳 | FDI factory construction, metro systems, industrial zones |
+| Korea | 🇰🇷 | Smart construction, modular building, green retrofit |
+
+## Target Accounts
+- Developers, planners, consultants, BIM consultants, project managers, technical teams
+- Focus: cloud-based construction solutions, RFIs, submittals, document control, ISO 19650
+
+## Competitors to Watch
+Procore, Trimble, Aconex (Oracle), PlanGrid, Bentley, Hexagon, Bluebeam, Newforma
+
+## Investment Profile
+- Broker: Futu (富途)
+- Markets: HK stocks, US stocks
+- Style: Growth + value mix, data-driven decisions
+- Analysis: wants top-investor-level advice with clear verdicts, target prices, stop losses

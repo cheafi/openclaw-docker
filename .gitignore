@@ -16,3 +16,12 @@ data/workspace/.clawhub/
 data/workspace/.openclaw/
 data/workspace/*.bak
 *.log
+
+data/gogcli/
+.env
+*.bak
+.trunk/
+
+data/workspace/fix_and_pin.py
+data/workspace/setup_discord.py
+scripts/setup-discord-channels.sh

@@ -18,4 +18,26 @@ if [[ -f "$CONFIG_SRC" ]]; then
   fi
 fi
 
+# Patch models.json: set thinking=off for gpt-5.4 every 30s
+# (OpenClaw strips this field on startup, so we re-apply it)
+MODELS_JSON="/home/openclaw/.openclaw/agents/main/agent/models.json"
+if [[ -f "$MODELS_JSON" ]] && command -v python3 &>/dev/null; then
+  (
+    while true; do
+      sleep 30
+      python3 -c "
+import json
+p='$MODELS_JSON'
+with open(p) as f: d=json.load(f)
+changed=False
+for m in d.get('providers',{}).get('reelx',{}).get('models',[]):
+    if m.get('id')=='gpt-5.4' and m.get('thinking')!='off':
+        m['thinking']='off'; m['reasoning']=False; changed=True
+if changed:
+    with open(p,'w') as f: json.dump(d,f,indent=2); f.write('\n')
+" 2>/dev/null || true
+    done
+  ) &
+fi
+
 exec "$@"

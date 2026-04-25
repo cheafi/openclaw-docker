@@ -21,12 +21,8 @@ services:
     restart: unless-stopped
     env_file: .env
     environment:
-      # Ollama reachable inside Docker network
-      - OLLAMA_HOST=http://ollama:11434
-      # Futu OpenD on host machine
-      - FUTU_HOST=host.docker.internal
-      - FUTU_PORT=11111
-      - FUTU_TRD_ENV=SIMULATE
+      # gog CLI keyring password (for Google OAuth tokens)
+      - GOG_KEYRING_PASSWORD=openclaw
 
     # §8  Gateway port  /  §11 Web UI port
     ports:
@@ -40,6 +36,8 @@ services:
       - ./data:/home/openclaw/.openclaw
       # §3 Private documents directory for local doc assistant
       - ./documents:/home/openclaw/documents
+      # Persist gog (Google) CLI config & tokens across restarts
+      - ./data/gogcli:/home/openclaw/.config/gogcli
 
     depends_on:
       ollama:

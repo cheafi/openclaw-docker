@@ -1,71 +1,51 @@
-# TOOLS.md - Local Notes
+# TOOLS.md — Quick Reference
 
-Skills define *how* tools work. This file is for *your* specifics — the stuff that's unique to your setup.
+## Google (gog)
+- Account: cheafi.chan121@gmail.com
+- Calendar list: `gog calendar events primary --from DATE --to DATE -a cheafi.chan121@gmail.com`
+- Calendar create: `gog calendar create primary --summary "X" --start "ISO" --end "ISO" --description "DETAILS" -a cheafi.chan121@gmail.com`
+- Gmail: `gog gmail search 'query' -a cheafi.chan121@gmail.com`
+- Drive: `gog drive list -a cheafi.chan121@gmail.com`
 
-## 📅 Calendar & Tasks
+## Screenshot → Action Workflows
 
-### Google Calendar (via gog)
-- **Setup required:** Run `gog auth credentials /path/to/client_secret.json` then `gog auth add you@gmail.com --services gmail,calendar,drive,contacts,sheets,docs`
-- **Calendar ID:** (fill after setup, e.g. `primary` or `your@gmail.com`)
-- **Quick commands:**
-  - Events today: `gog calendar events primary --from $(date -I) --to $(date -d tomorrow -I)`
-  - Create event: `gog calendar create primary --summary "Meeting" --start "2026-03-26T14:00:00" --end "2026-03-26T15:00:00"`
-- **GOG_ACCOUNT:** Set in .env to avoid repeating `--account`
+### Portfolio Screenshot
+1. Extract: stock codes, qty, avg cost, current price, P&L
+2. Analyze each position: BUY MORE / HOLD / SELL
+3. Provide: Target Price 1 & 2, Stop Loss, Reasoning
+4. Post to #💰-investing, save to memory
 
-### Todoist
-- **Setup required:** Get API token from https://todoist.com/app/settings/integrations/developer
-- **Set token:** `todoist auth <your-token>` or `export TODOIST_API_TOKEN="..."`
-- **Quick commands:**
-  - Today's tasks: `todoist today`
-  - Add task: `todoist add "Task name" --due "tomorrow 10am" --priority 1 --project "Work"`
-  - Complete: `todoist done <task-id>`
+### Reservation / Payment / Chat Screenshot
+1. Extract: date, time, location, people, amount
+2. Auto-create Google Calendar event
+3. Confirm back with extracted details
 
-### Linear
-- **Setup required:** API key from Linear Settings → API → Personal API Keys
-- **Set token:** `export LINEAR_API_KEY="lin_api_..."`
+### Client Conversation Screenshot
+1. Extract conversation text
+2. Translate to English
+3. Generate 2-3 reply options (Professional / Friendly / Direct)
+4. Reply in client's language + English translation
 
-## 🧠 Second Brain (Memory Layer)
-
-### How it works
-- Text anything to the bot → it auto-saves to `memory/YYYY-MM-DD.md`
-- Say "remember this: ..." for explicit storage
-- Say "find that thing about ..." for semantic recall
-- Long-term important items go to `MEMORY.md`
-
-### Memory locations
-- Daily raw logs: `memory/YYYY-MM-DD.md`
-- Curated long-term: `MEMORY.md`
-- Heartbeat auto-consolidates weekly
-
-### Search
-- "What did I mention about X?" → searches memory files
-- "Find the link I saved about Y" → full-text search across notes
-
-## 📄 Private Document Assistant (Ollama)
-
-### Setup
-- Ollama runs at `http://ollama:11434` inside Docker
-- Put documents in `openclaw-docker/documents/` on host
-- Inside container: `/home/openclaw/documents/`
-
-### Models (pull once)
-- Fast answers: `qwen3:4b` (~2.5GB)
-- General use: `llama3.1:8b` (~4.7GB)
-- Coding: `qwen2.5-coder:7b` (~4.4GB)
-
-### Usage
-- "Summarize the contract in documents/contract.pdf"
-- "What are the key terms in documents/agreement.pdf?"
-- Everything stays local — never sent to external APIs
-
-## Environment Variables
-```
-GOG_ACCOUNT=your@gmail.com
-TODOIST_API_TOKEN=your-token
-LINEAR_API_KEY=lin_api_xxx
-OLLAMA_HOST=http://ollama:11434
+## Tavily Web Search
+```bash
+python3 {baseDir}/scripts/tavily_search.py --query "..." --max-results 5 --format md
 ```
 
----
+## EPC Market Search Queries
+For each country, search with queries like:
+- `"[country] EPC project award 2026"`
+- `"[country] construction policy update"`
+- `"[country] BIM mandate CDE regulation"`
+- `"[country] AEC market news"`
 
-Add whatever helps you do your job. This is your cheat sheet.
+## Todoist
+- Today: `todoist today` | Add: `todoist add "Task" --due "tomorrow 10am"`
+
+## Reminders via Cron
+- Recurring: `cron add --schedule "0 */2 8-22 * * *" --message "💧 飲水時間！"`
+- One-time: use todoist with --due flag
+
+## Memory
+- Daily: `memory/YYYY-MM-DD.md`
+- Long-term: `MEMORY.md`
+- Search: full-text across memory files

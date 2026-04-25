@@ -1,55 +1,53 @@
-# 🦞 Wai Bot — Your Personal AI Assistant on Discord
+# 🦞 Wai Bot — Personal AI Assistant on Discord
 
-> A personal AI assistant that lives in your Discord server. It can check the weather, manage your calendar, search the web, help with work tasks, and more — all from a chat message.
+> A self-hosted AI assistant in Discord that handles weather, calendar, email, reminders, news, web search, and work tasks — all from a chat message.
+
+Built on [OpenClaw](https://openclaw.com) · Powered by Claude Sonnet 4.6 · 28 skills installed
 
 ---
 
-## What Is This?
+## Quick Start
 
-**Wai Bot** is a self-hosted AI assistant that runs on your computer using Docker. Think of it like having your own private ChatGPT, but it lives inside Discord and can do things for you automatically.
+1. Open Discord → Go to **#一般**
+2. Type anything in Cantonese or English
+3. The bot replies. That's it.
 
-It's built on [OpenClaw](https://openclaw.com), an open-source AI agent platform.
+**📖 Documentation:**
 
-### What Can It Do?
+| Guide | What it covers |
+|-------|---------------|
+| [START_HERE.md](docs/START_HERE.md) | **New user? Read this first** — 5-minute onboarding |
+| [CHANNEL_GUIDE.md](docs/CHANNEL_GUIDE.md) | Every channel explained with examples |
+| [SKILL_GUIDE.md](docs/SKILL_GUIDE.md) | All 28 installed skills + available skills |
+| [RECOMMENDED_STACKS.md](docs/RECOMMENDED_STACKS.md) | Best setup for daily use, keep/hide/admin lists |
+| [CHEATSHEET.md](docs/CHEATSHEET.md) | Copy-paste prompts for common tasks |
+| [QUICKSTART.md](docs/QUICKSTART.md) | Technical setup (Docker, API keys, config) |
+
+---
+
+## What Can It Do?
 
 | Ask it... | What happens |
 |-----------|-------------|
-| "Today weather" | Gets the current Hong Kong weather forecast |
-| "Help me plan today" | Looks at your calendar and suggests a plan |
-| "Summarize this article: [link]" | Reads and summarizes any webpage |
-| "Show EPC projects in Vietnam" | Searches the web for construction industry news |
-| "Remember to buy groceries" | Saves a reminder for you |
-| "What can you help me with?" | Lists everything it can do |
-
-### How It Works (Simple Version)
-
-```
-You type in Discord → Bot reads your message → AI thinks about it → Bot replies
-```
-
-Behind the scenes:
-1. **Discord** receives your message
-2. **OpenClaw** (the brain) processes it
-3. The **AI model** (GPT-5.4) generates a response
-4. If needed, it uses **tools** (weather lookup, web search, calendar)
-5. The reply shows up in your Discord channel
+| `今日天氣點？` | Hong Kong weather forecast |
+| `今日有咩event？` | Shows your Google Calendar |
+| `有咩新email？` | Summarises your Gmail inbox |
+| `提醒我5pm覆客` | Sets a reminder |
+| `Search for AI news` | Searches the web |
+| `幫我寫封follow-up email` | Drafts an email for you |
 
 ---
 
-## Discord Channels Guide
+## Discord Channels
 
-The bot works in ALL channels, but each channel has a focus:
+| Category | Channels |
+|----------|----------|
+| 📱 日常生活 | #☀-天氣-weather · #📅-日曆-calendar · #⏰-提醒-reminders · #📰-新聞-news · #📧-電郵-email |
+| 💬 一般 | #一般 · #❓-幫助-help |
+| 💼 工作 | #💼-工作-work · #🏗-項目追蹤-projects · #🎯-prospecting · #📊-競爭對手-competitors · #🌏-apac-market · #📄-文件-documents |
+| 🛠 系統 | #healthcheck · #self-improving |
 
-| Channel | What it's for | Try saying... |
-|---------|--------------|---------------|
-| **#一般** | 🏠 Main channel — ask anything here | "What can you help me with?" |
-| **#hk-weather** | ☔ Hong Kong weather updates | "Today weather" or "今日天氣" |
-| **#healthcheck** | 🏥 Check if the bot is working | "Health check" |
-| **#construction-news** | 📰 Construction industry search | "Latest EPC projects in Southeast Asia" |
-| **#summarize** | 📝 Summarize articles or text | "Summarize this: [paste text]" |
-| **#file-organizer** | 📁 Help with files and docs | "Help me organize my notes" |
-
-**Pro tip:** If you're not sure which channel to use, just go to **#一般**. The bot can handle anything there.
+**Tip:** Everything works in #一般. Other channels are optional shortcuts.
 
 ---
 
@@ -171,7 +169,7 @@ docker compose up -d --build
 | Problem | Fix |
 |---------|-----|
 | Bot is offline in Discord | Run `docker compose logs claw --since 2m` and check for errors |
-| Bot doesn't reply | Make sure `reasoning: true` is set for your model in `data/agents/main/agent/models.json` |
+| Bot doesn't reply | Check `docker compose logs claw --since 5m` for errors. Model may need restarting. |
 | "401 Unauthorized" error | Your Discord bot token is wrong or expired — get a new one |
 | Docker won't start | Open Docker Desktop first, wait for it to fully load |
 | Bot replies with emoji only | Check `ackReactionScope` is set to `"direct"` in `data/openclaw.json` |
@@ -234,7 +232,7 @@ openclaw-docker/
 ## FAQ
 
 **Q: Is this free?**
-A: The bot software is free. You pay for the AI model API (like GPT-5.4) based on how much you use it.
+A: The bot software is free. You pay for the AI model API (Claude Sonnet 4.6) based on how much you use it.
 
 **Q: Does my data go to the cloud?**
 A: Your messages go to the AI model provider for processing. Everything else stays on your computer.

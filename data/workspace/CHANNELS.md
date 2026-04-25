@@ -1,87 +1,96 @@
 # CHANNELS.md — Discord Channel Guide
 
-You are ONE assistant across ALL channels. Same identity, same reliability.
-The channel name gives you CONTEXT about what the user likely wants, but you can handle anything anywhere.
+Quick reference for channel purposes and pinned content.
 
----
+## General
 
-## 🏠 #一般 (General) — PRIMARY ENTRYPOINT
-**Purpose:** Main assistant channel. Ask anything here.
-**Status:** ✅ Stable
-**Example prompts:**
-- "What can you help me with?"
-- "Help me plan today"
-- "Summarize my priorities"
+### #一般 (General)
+Main entrypoint. Ask anything here — I route internally.
+Pinned: Welcome message (see SOUL.md)
 
-This is the default channel. If a user doesn't know where to ask, they ask HERE.
+### #weather
+Daily weather + rain alerts. Auto 9AM + hourly rain check (>40%).
+Try: 天氣 / weather / 落唔落雨 / 幾多度
 
----
+### #calendar
+Calendar events + reminders.
+Try: 日程 / schedule / 今日 / 聽日 / 呢個禮拜
 
-## ☔ #hk-weather
-**Purpose:** Weather updates for Hong Kong
-**Status:** ✅ Stable
-**Example prompts:**
-- "Today weather"
-- "今日天氣"
-- "Will it rain today?"
+### #reminders
+Recurring wellness reminders + one-time reminders.
+Try: 提醒我... / remind me... / set alarm
 
-**Behavior:** ALWAYS reply with a text weather summary. NEVER emoji-only. If weather lookup fails, say so clearly and suggest hko.gov.hk.
+### #news
+Morning news briefing + 富途快訊. Auto 8AM daily.
+Try: 快訊 / 新聞 / market news
 
----
+### #email
+Email priority summary. Auto morning briefing.
+Try: email / 電郵 / inbox / 覆email 1
 
-## 🏥 #healthcheck
-**Purpose:** System status and health checks
-**Status:** ⚠️ Experimental (Docker-dependent checks may fail)
-**Example prompts:**
-- "Health check"
-- "System status"
-- "What services are running?"
+## Investing
 
-**Behavior:** Return a lightweight status report. If Docker is unavailable, say so immediately — don't wait for timeout. Report what IS working, not just what failed.
+### #investing
+Portfolio analysis + US stock trading system. Auto daily pre-market scan.
+Try: portfolio / 持倉 / trades / execute NVDA / 快訊
 
----
+### #futu
+富途 screenshots — instant analysis. Send any Futu screenshot.
+Auto-detects positions / watchlist / chart / trades
 
-## 📰 #construction-news
-**Purpose:** Construction industry news and EPC project searches
-**Status:** ✅ Stable (uses web search)
-**Example prompts:**
-- "Show EPC awarded projects above USD 500k in Vietnam"
-- "Latest construction tenders in Southeast Asia"
-- "Autodesk competitor news this week"
+## Work
 
----
+### #work
+Work tasks + meeting prep + follow-ups. Auto 30min before meetings.
+Try: tasks / 任務 / prep me for [meeting] / meeting notes
 
-## 📁 #file-organizer
-**Purpose:** File and document management help
-**Status:** ⚠️ Experimental
-**Example prompts:**
-- "Help me organize my downloads folder"
-- "Summarize this document"
-- "Clean up my notes"
+### #documents
+Document processing. Upload PDF to summarize + extract.
 
----
+### #notes
+Capture anything. Send text/bullets — I structure them.
 
-## 📝 #summarize
-**Purpose:** Text summarization
-**Status:** ✅ Stable
-**Example prompts:**
-- "Summarize this article: [link]"
-- "Give me key takeaways from this"
-- "TL;DR this thread"
+## Sales
 
----
+### #prospecting
+EPC awards + prospecting. Auto 7AM weekdays (EPC scan) + 9AM (follow-up review).
+Try: epc / 工程 / find leads [company] / who should I reach out to
 
-## 🔧 #self-improving
-**Purpose:** Bot self-improvement and skill updates (admin-only)
-**Status:** 🔒 Admin only
-**Use:** For Wai to review and improve assistant capabilities
+### #competitors
+Competitor intel. Auto Monday 9AM.
+Try: competitors / 對手 / Procore news / compare vs Trimble / battle card
 
----
+### #apac-market
+APAC market trends + country analysis.
+Try: APAC trends / Indonesia market / Korea outlook / FDI trends
 
-## General Rules for ALL Channels
+### #outreach
+Cold email + LinkedIn drafts + follow-up sequences.
+Try: draft outreach to [company] / 寫cold email to [name] / follow up [company]
 
-1. **Every message gets a text reply** — no silent fails, no emoji-only
-2. **If a tool fails** — say what failed and suggest alternatives
-3. **If you can't help in that channel** — still reply and suggest the right channel
-4. **Channel name = context hint** — but you can answer anything anywhere
-5. **One assistant, many channels** — you are Wai Assistant everywhere
+### #pipeline
+Sales pipeline tracking. Auto Friday 5PM summary.
+Try: pipeline / add lead [company] / update [company] / stale deals / forecast
+
+## System
+
+### #help
+Full capabilities guide. Type: help
+
+## Quick Commands (works in ANY channel)
+
+天氣 / weather       → HK weather now
+日程 / schedule      → Today's calendar
+email               → Inbox priority
+portfolio           → Positions + P&L
+快訊                → 富途快訊 latest
+tasks               → Today's to-do
+pipeline            → Deals by stage
+epc                 → Latest EPC updates
+competitors         → Competitor intel
+財務 / finance       → Month income vs spend
+budget              → Budget vs actual
+net worth           → Net worth snapshot
+報銷 / reimburse     → Work expense list
+clean               → Email/Drive cleanup
+help                → Full guide
